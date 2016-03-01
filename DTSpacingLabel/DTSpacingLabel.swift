@@ -28,14 +28,14 @@ import UIKit
 public class DTSpacingLabel: UILabel {
     
     @IBInspectable
-    var kern: Float = 0.0 {
+    public var kern: Float = 0.0 {
         didSet {
             self.updateTextStyle()
         }
     }
     
     @IBInspectable
-    var textLineSpacing:CGFloat = 0.0 {
+    public var textLineSpacing:CGFloat = 0.0 {
         didSet {
             self.updateTextStyle()
         }

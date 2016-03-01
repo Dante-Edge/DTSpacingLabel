@@ -7,11 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3084CC7A1C85896C0022C3C7 /* DTSpacingLabel.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 3084CC791C85896C0022C3C7 /* DTSpacingLabel.podspec */; };
 		30917A321C857072003A450C /* DTSpacingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30917A311C857072003A450C /* DTSpacingLabel.swift */; };
 		30917A361C8570FD003A450C /* DTSpacingLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = 30917A351C8570FD003A450C /* DTSpacingLabel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3084CC791C85896C0022C3C7 /* DTSpacingLabel.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DTSpacingLabel.podspec; sourceTree = "<group>"; };
 		30917A261C85704C003A450C /* DTSpacingLabel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DTSpacingLabel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		30917A2B1C85704C003A450C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		30917A311C857072003A450C /* DTSpacingLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DTSpacingLabel.swift; sourceTree = "<group>"; };
@@ -32,6 +34,7 @@
 		30917A1C1C85704C003A450C = {
 			isa = PBXGroup;
 			children = (
+				3084CC791C85896C0022C3C7 /* DTSpacingLabel.podspec */,
 				30917A281C85704C003A450C /* DTSpacingLabel */,
 				30917A271C85704C003A450C /* Products */,
 			);
@@ -123,6 +126,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3084CC7A1C85896C0022C3C7 /* DTSpacingLabel.podspec in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
