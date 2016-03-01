@@ -28,45 +28,66 @@ import UIKit
 public class DTSpacingLabel: UILabel {
     
     @IBInspectable
-    public var kern:Float = 0.0 {
+    var kern: Float = 0.0 {
         didSet {
-            self.awakeFromNib()
+            self.updateTextStyle()
         }
     }
     
     @IBInspectable
-    public var textLineSpacing:CGFloat = 0.0 {
+    var textLineSpacing:CGFloat = 0.0 {
         didSet {
-            self.awakeFromNib()
+            self.updateTextStyle()
         }
+    }
+    
+    override public init(frame: CGRect) {
+        super.init(frame: frame)
+        setup()
+    }
+    
+    required public init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        setup()
+    }
+    
+    func setup() {
+        self.kern = 0.0
+        self.textLineSpacing = 0.0
     }
     
     override public func awakeFromNib() {
         super.awakeFromNib()
-        let attributedText = NSMutableAttributedString(attributedString: super.attributedText!)
-        
-        attributedText.beginEditing()
-        attributedText.addAttributes([NSKernAttributeName: self.kern], range: NSMakeRange(0, attributedText.length))
-        attributedText.endEditing()
-        
-        
-        var range : NSRange = NSMakeRange(0, attributedText.length)
-        let attributeDict = attributedText.attributesAtIndex(0, effectiveRange: &range)
-        
-        
-        var paragraphStyle: NSMutableParagraphStyle!
-        
-        if let originalParagraphStyle = attributeDict[NSParagraphStyleAttributeName] {
-            paragraphStyle = (originalParagraphStyle as! NSParagraphStyle).mutableCopy() as! NSMutableParagraphStyle
+        updateTextStyle()
+    }
+    
+    func updateTextStyle() {
+        if super.attributedText != nil {
+            let attributedText = NSMutableAttributedString(attributedString: super.attributedText!)
+            
+            attributedText.beginEditing()
+            attributedText.addAttributes([NSKernAttributeName: self.kern], range: NSMakeRange(0, attributedText.length))
+            attributedText.endEditing()
+            
+            
+            var range : NSRange = NSMakeRange(0, attributedText.length)
+            let attributeDict = attributedText.attributesAtIndex(0, effectiveRange: &range)
+            
+            
+            var paragraphStyle: NSMutableParagraphStyle!
+            
+            if let originalParagraphStyle = attributeDict[NSParagraphStyleAttributeName] {
+                paragraphStyle = (originalParagraphStyle as! NSParagraphStyle).mutableCopy() as! NSMutableParagraphStyle
+            }
+            else {
+                paragraphStyle = NSMutableParagraphStyle()
+            }
+            
+            paragraphStyle.lineSpacing = self.textLineSpacing
+            attributedText.addAttribute(NSParagraphStyleAttributeName, value: paragraphStyle, range: NSMakeRange(0, attributedText.length))
+            
+            
+            super.attributedText = attributedText
         }
-        else {
-            paragraphStyle = NSMutableParagraphStyle()
-        }
-        
-        paragraphStyle.lineSpacing = self.textLineSpacing
-        attributedText.addAttribute(NSParagraphStyleAttributeName, value: paragraphStyle, range: NSMakeRange(0, attributedText.length))
-        
-        
-        super.attributedText = attributedText
     }
 }
