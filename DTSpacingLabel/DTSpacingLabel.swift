@@ -28,7 +28,7 @@ import UIKit
 public class DTSpacingLabel: UILabel {
     
     @IBInspectable
-    public var kern: Float = 0.0 {
+    public var kern: CGFloat = 0.0 {
         didSet {
             self.updateTextStyle()
         }
@@ -37,6 +37,16 @@ public class DTSpacingLabel: UILabel {
     @IBInspectable
     public var textLineSpacing:CGFloat = 0.0 {
         didSet {
+            self.updateTextStyle()
+        }
+    }
+    
+    override public var text: String? {
+        get {
+            return super.text
+        }
+        set {
+            super.text = newValue
             self.updateTextStyle()
         }
     }
